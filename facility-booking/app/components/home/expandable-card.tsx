@@ -17,9 +17,11 @@ export type Establishment = {
 const ExpandableCard = ({
   dictionary,
   establishment,
+  updatePrice,
 }: {
   dictionary: Recursive<string>;
   establishment: Establishment;
+  updatePrice: (price: number) => void;
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -30,12 +32,17 @@ const ExpandableCard = ({
   });
 
   const toggleSlot = (court: string, slot: string) => {
-    setSelectedSlots((prev) => {
-      const updatedSlots = prev[court].includes(slot)
-        ? prev[court].filter((s) => s !== slot)
-        : [...prev[court], slot];
-      return { ...prev, [court]: updatedSlots };
-    });
+    const updatedSlots = selectedSlots[court].includes(slot)
+      ? selectedSlots[court].filter((s) => s !== slot)
+      : [...selectedSlots[court], slot];
+    const newSelectedSlots = { ...selectedSlots, [court]: updatedSlots };
+    setSelectedSlots(newSelectedSlots);
+    const slots = Object.entries(newSelectedSlots);
+    const totalPrice = slots.reduce(
+      (accumulator, [key, value]) => accumulator + value.length,
+      0
+    );
+    updatePrice(totalPrice);
   };
 
   return (

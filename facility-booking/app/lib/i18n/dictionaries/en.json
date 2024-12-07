@@ -57,6 +57,7 @@
     "endTime": "End Time",
     "sport": "Sport Type",
     "facility": "Type of Facility",
+    "user": "Type of user",
     "submit": "Submit",
     "reset": "Reset"
   },
@@ -78,6 +79,11 @@
     "fullCourt": "Full Court",
     "halfCourt": "Half Court",
     "room": "Room"
+  },
+  "users": {
+    "adult": "Adult",
+    "student": "Student",
+    "middleSchool": "Middle school"
   },
   "results": {
     "court": "Court"

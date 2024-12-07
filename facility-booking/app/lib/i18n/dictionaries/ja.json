@@ -57,6 +57,7 @@
     "endTime": "終了時間",
     "sport": "スポーツの種類",
     "facility": "施設の種類",
+    "user": "利用者の種類",
     "submit": "送信",
     "reset": "リセット"
   },
@@ -78,6 +79,11 @@
     "fullCourt": "全面コート",
     "halfCourt": "ハーフコート",
     "room": "部屋"
+  },
+  "users": {
+    "adult": "一般",
+    "student": "大学生",
+    "middleSchool": "中学生"
   },
   "results": {
     "court": "コート"
