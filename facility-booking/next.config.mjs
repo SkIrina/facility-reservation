@@ -1,3 +1,6 @@
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
   i18n: {
     locales: ["en", "ja"],
@@ -5,10 +8,6 @@ const nextConfig = {
   },
   images: {
     domains: ["localhost"],
-  },
-  typescript: {
-    // Enable type checking during build
-    ignoreBuildErrors: false,
   },
 };
 
