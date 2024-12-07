@@ -7,6 +7,60 @@ import ExpandableCard from "./expandable-card";
 type Recursive<T> = {
   [key: string]: T | Recursive<T>;
 };
+
+const establishments = [
+  {
+    title: "Sun ability",
+    facilities: [
+      {
+        title: "Court A",
+        slots: {
+          "16:00": false,
+          "17:00": true,
+          "18:00": true,
+          "19:00": true,
+          "20:00": true,
+        },
+      },
+      {
+        title: "Court B",
+        slots: {
+          "16:00": true,
+          "17:00": true,
+          "18:00": true,
+          "19:00": true,
+          "20:00": false,
+        },
+      },
+    ],
+  },
+  {
+    title: "Acty Hikawa",
+    facilities: [
+      {
+        title: "Court A",
+        slots: {
+          "16:00": true,
+          "17:00": true,
+          "18:00": true,
+          "19:00": true,
+          "20:00": false,
+        },
+      },
+      {
+        title: "Court B",
+        slots: {
+          "16:00": true,
+          "17:00": true,
+          "18:00": true,
+          "19:00": true,
+          "20:00": true,
+        },
+      },
+    ],
+  },
+];
+
 const HomeForm = ({
   locale,
   dictionary,
@@ -149,7 +203,9 @@ const HomeForm = ({
           </button>
         </div>
       </form>
-      <ExpandableCard dictionary={dictionary} />
+      {establishments.map((est) => (
+        <ExpandableCard dictionary={dictionary} establishment={est} />
+      ))}
     </div>
   );
 };

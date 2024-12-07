@@ -4,7 +4,23 @@ type Recursive<T> = {
   [key: string]: T | Recursive<T>;
 };
 
-const ExpandableCard = ({ dictionary }: { dictionary: Recursive<string> }) => {
+export type Establishment = {
+  title: string;
+  facilities: {
+    title: string;
+    slots: {
+      [key: string]: boolean;
+    };
+  }[];
+};
+
+const ExpandableCard = ({
+  dictionary,
+  establishment,
+}: {
+  dictionary: Recursive<string>;
+  establishment: Establishment;
+}) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   // State to track toggled buttons
@@ -29,7 +45,7 @@ const ExpandableCard = ({ dictionary }: { dictionary: Recursive<string> }) => {
         className="cursor-pointer p-4 bg-gray-200 flex justify-between items-center"
         onClick={() => setIsExpanded((prev) => !prev)}
       >
-        <h2 className="text-lg font-bold">Sun ability</h2>
+        <h2 className="text-lg font-bold">{establishment.title}</h2>
         <span>{isExpanded ? "▲" : "▼"}</span>
       </div>
 
@@ -38,27 +54,29 @@ const ExpandableCard = ({ dictionary }: { dictionary: Recursive<string> }) => {
         <div className="p-4">
           <table className="w-full border-collapse border border-gray-300">
             <tbody>
-              {["Court A", "Court B"].map((court) => (
-                <tr key={court}>
+              {establishment.facilities.map((facility) => (
+                <tr key={facility.title}>
                   <td className="border border-gray-300 px-4 py-2 font-semibold">
-                    {court}
+                    {facility.title}
                   </td>
                   <td
-                    key={`${court}`}
+                    key={`${facility.title}`}
                     className="border border-gray-300 px-4 py-2"
                   >
-                    {["16:00", "17:00", "18:00", "19:00"].map((time) => (
-                      <button
-                        className={`px-2 py-1 m-1 rounded ${
-                          selectedSlots[court].includes(time)
-                            ? "bg-blue-500 text-white"
-                            : "bg-white text-gray-800 border border-gray-800"
-                        }`}
-                        onClick={() => toggleSlot(court, time)}
-                      >
-                        {time}
-                      </button>
-                    ))}
+                    {Object.entries(facility.slots).map(
+                      ([slot, isAvalable]) => (
+                        <button
+                          className={`px-2 py-1 m-1 rounded ${
+                            selectedSlots[facility.title].includes(slot)
+                              ? "bg-blue-500 text-white"
+                              : "bg-white text-gray-800 border border-gray-800"
+                          }${isAvalable ? "" : " !bg-gray-200 pointer-events-none border-none"}`}
+                          onClick={() => toggleSlot(facility.title, slot)}
+                        >
+                          {slot}
+                        </button>
+                      )
+                    )}
                   </td>
                 </tr>
               ))}
