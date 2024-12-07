@@ -15,7 +15,8 @@
       "tennis": "Tennis",
       "basketball": "Basketball",
       "soccer": "Soccer",
-      "swimming": "Swimming"
+      "swimming": "Swimming",
+      "tableTennis": "Table Tennis"
     },
     "userTypes": {
       "adult": "Adult",
