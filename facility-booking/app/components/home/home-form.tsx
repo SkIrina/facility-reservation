@@ -86,6 +86,7 @@ const HomeForm = ({
   const updatePrice = (newValue: number) => {
     setPrice(newValue);
   };
+  const [showResults, setShowResults] = useState(false);
 
   return (
     <div className="p-4 max-w-xl mx-auto">
@@ -222,27 +223,35 @@ const HomeForm = ({
             {(dictionary.form as Record<string, string>).reset}
           </button>
           <button
-            type="submit"
+            type="button"
             className="px-4 py-2 bg-blue-600 text-white rounded-md"
+            onClick={() => setShowResults(true)}
           >
             {(dictionary.form as Record<string, string>).submit}
           </button>
         </div>
       </form>
-      {establishments.map((est) => (
-        <ExpandableCard
-          dictionary={dictionary}
-          establishment={est}
-          updatePrice={updatePrice}
-        />
-      ))}
-      {/* Total Price Section */}
-      <div className="bg-white p-6 rounded-lg shadow-md text-center mt-6">
-        <h2 className="text-xl font-semibold text-gray-800 mb-2">
-          Total Price
-        </h2>
-        <p className="text-2xl font-bold text-blue-500">￥{price * 760}</p>
-      </div>
+      {showResults && (
+        <>
+          {establishments.map((est) => (
+            <ExpandableCard
+              dictionary={dictionary}
+              establishment={est}
+              updatePrice={updatePrice}
+            />
+          ))}
+          {/* Total Price Section */}
+          <div className="bg-white p-6 rounded-lg shadow-md text-center mt-6">
+            <h2 className="text-xl font-semibold text-gray-800 mb-2">
+              Total Price
+            </h2>
+            <p className="text-2xl font-bold text-blue-500">
+              ￥
+              {price * (user === "adult" ? 760 : user === "student" ? 365 : 0)}
+            </p>
+          </div>
+        </>
+      )}
     </div>
   );
 };
