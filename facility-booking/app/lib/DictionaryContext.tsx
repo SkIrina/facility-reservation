@@ -1,3 +1,4 @@
+"use client"
 import React, { createContext, useContext } from 'react';
 
 // Define the shape of the dictionary and context
