@@ -35,6 +35,10 @@ export const options = {
       stacked: true,
     },
     y: {
+      title: {
+        display: true,
+        text: "％",
+      },
       stacked: true,
       max: 100,
     },
