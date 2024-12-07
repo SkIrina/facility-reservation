@@ -11,12 +11,21 @@
     "area": "Area",
     "search": "Search Available Facilities",
     "sports": {
-      "volleyball": "Volleyball",
-      "tennis": "Tennis",
       "basketball": "Basketball",
+      "miniBasketball": "Mini Basketball",
+      "volleyball": "Volleyball",
+      "softVolleyball": "Soft Volleyball",
+      "badminton": "Badminton",
+      "handball": "Handball",
+      "futsal": "Futsal",
+      "tableTennis": "Table Tennis",
+      "spongeTennis": "Sponge Tennis",
+      "dodgeBall": "DodgeBall",
+      "archery": "Archery",
+      "newSport": "New Sport",
+      "tennis": "Tennis",
       "soccer": "Soccer",
-      "swimming": "Swimming",
-      "tableTennis": "Table Tennis"
+      "swimming": "Swimming"
     },
     "userTypes": {
       "adult": "Adult",

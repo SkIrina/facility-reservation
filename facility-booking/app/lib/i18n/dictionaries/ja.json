@@ -11,12 +11,21 @@
     "area": "エリア",
     "search": "空き施設を検索",
     "sports": {
-      "volleyball": "バレーボール",
-      "tennis": "テニス",
       "basketball": "バスケットボール",
+      "miniBasketball": "ミニバスケットボール",
+      "volleyball": "バレーボール",
+      "softVolleyball": "ソフトバレーボール",
+      "badminton": "バドミントン",
+      "handball": "ハンドボール",
+      "futsal": "フットサル",
+      "tableTennis": "卓球",
+      "spongeTennis": "スポンジテニス",
+      "dodgeBall": "ドッジボール",
+      "archery": "アーチェリー",
+      "newSport": "ニュースポーツ",
+      "tennis": "テニス",
       "soccer": "サッカー",
-      "swimming": "水泳",
-      "tableTennis": "卓球"
+      "swimming": "水泳"
     },
     "userTypes": {
       "adult": "一般",
