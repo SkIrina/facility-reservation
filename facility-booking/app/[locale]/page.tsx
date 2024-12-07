@@ -1,4 +1,4 @@
-import { HomeForm } from "@/components/home/home-form";
+import HomeForm from "../components/home/home-form";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { getDictionary } from "./dictionaries";
 
@@ -20,7 +20,7 @@ export default async function HomePage({
           {dictionary.home.title}
         </h1>
 
-        <HomeForm dictionary={dictionary.home} locale={locale} />
+        <HomeForm locale={locale} dictionary={dictionary} />
       </div>
     </div>
   );

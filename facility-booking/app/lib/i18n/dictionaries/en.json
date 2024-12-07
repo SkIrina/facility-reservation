@@ -50,5 +50,36 @@
     "endTime": "End Time",
     "confirm": "Confirm Booking",
     "cancel": "Cancel"
+  },
+  "form": {
+    "date": "Select Date",
+    "startTime": "Start Time",
+    "endTime": "End Time",
+    "sport": "Sport Type",
+    "facility": "Type of Facility",
+    "submit": "Submit",
+    "reset": "Reset"
+  },
+  "sports": {
+    "basketball": "Basketball",
+    "miniBasketball": "Mini Basketball",
+    "volleyball": "Volleyball",
+    "softVolleyball": "Soft Volleyball",
+    "badminton": "Badminton",
+    "handball": "Handball",
+    "futsal": "Futsal",
+    "tableTennis": "Table Tennis",
+    "spongeTennis": "Sponge Tennis",
+    "dodgeBall": "DodgeBall",
+    "archery": "Archery",
+    "newSport": "New Sport"
+  },
+  "facilities": {
+    "fullCourt": "Full Court",
+    "halfCourt": "Half Court",
+    "room": "Room"
+  },
+  "results": {
+    "court": "Court"
   }
 }

@@ -1,124 +1,157 @@
-'use client'
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
-import { Calendar } from 'lucide-react'
+"use client";
+import React, { useState } from "react";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import ExpandableCard from "./expandable-card";
 
-type HomeFormProps = {
-  dictionary: {
-    date: string
-    sport: string
-    userType: string
-    area: string
-    search: string
-    sports: Record<string, string>
-    userTypes: Record<string, string>
-    areas: Record<string, string>
-  }
-  locale: string
-}
+type Recursive<T> = {
+  [key: string]: T | Recursive<T>;
+};
+const HomeForm = ({
+  locale,
+  dictionary,
+}: {
+  locale: string;
+  dictionary: Recursive<string>;
+}) => {
+  const [date, setDate] = useState<Date | null>(null);
+  const [startTime, setStartTime] = useState("");
+  const [endTime, setEndTime] = useState("");
+  const [sport, setSport] = useState("");
+  const [facility, setFacility] = useState("");
 
-export function HomeForm({ dictionary, locale }: HomeFormProps) {
-  const router = useRouter()
-  const [selectedDate, setSelectedDate] = useState(
-    new Date().toISOString().split('T')[0]
-  )
-  const [selectedSport, setSelectedSport] = useState('')
-  const [selectedUserType, setSelectedUserType] = useState('')
-  const [selectedArea, setSelectedArea] = useState('')
+  const times = Array.from({ length: 22 - 8 + 1 }, (_, i) => `${i + 8}:00`);
 
-  const handleSearch = () => {
-    const searchParams = new URLSearchParams({
-      date: selectedDate,
-      sport: selectedSport,
-      userType: selectedUserType,
-      area: selectedArea,
-    })
-    router.push(`/${locale}/search?${searchParams.toString()}`)
-  }
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert(JSON.stringify({ date, startTime, endTime, sport, facility }));
+  };
 
   return (
-    <div className="max-w-md mx-auto bg-white rounded-lg shadow-md p-6 space-y-6">
-      {/* Date Selection */}
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          {dictionary.date}
-        </label>
-        <div className="relative">
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
-            min={new Date().toISOString().split('T')[0]}
+    <div className="p-4 max-w-xl mx-auto">
+      <form onSubmit={handleSubmit} className="space-y-4">
+        {/* Date Picker */}
+        <div>
+          <label className="block text-sm font-medium">
+            {(dictionary.form as Record<string, string>).date}
+          </label>
+          <DatePicker
+            selected={date}
+            onChange={(date) => setDate(date)}
+            className="w-full border border-gray-300 rounded-md p-2"
           />
-          <Calendar className="absolute right-3 top-2.5 h-5 w-5 text-gray-400" />
         </div>
-      </div>
 
-      {/* Sport Type Selection */}
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          {dictionary.sport}
-        </label>
-        <select
-          value={selectedSport}
-          onChange={(e) => setSelectedSport(e.target.value)}
-          className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
-        >
-          <option value="">---</option>
-          {Object.entries(dictionary.sports).map(([key, value]) => (
-            <option key={key} value={key}>
-              {value}
+        {/* Time Pickers */}
+        <div className="flex space-x-2">
+          <div className="flex-1">
+            <label className="block text-sm font-medium">
+              {(dictionary.form as Record<string, string>).startTime}
+            </label>
+            <select
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+              className="w-full border border-gray-300 rounded-md p-2"
+            >
+              <option value="">
+                {(dictionary.form as Record<string, string>).startTime}
+              </option>
+              {times.map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="flex-1">
+            <label className="block text-sm font-medium">
+              {(dictionary.form as Record<string, string>).endTime}
+            </label>
+            <select
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+              className="w-full border border-gray-300 rounded-md p-2"
+            >
+              <option value="">
+                {(dictionary.form as Record<string, string>).endTime}
+              </option>
+              {times.map((time) => (
+                <option key={time} value={time}>
+                  {time}
+                </option>
+              ))}
+            </select>
+          </div>
+        </div>
+
+        {/* Sport Type */}
+        <div>
+          <label className="block text-sm font-medium">
+            {(dictionary.form as Record<string, string>).sport}
+          </label>
+          <select
+            value={sport}
+            onChange={(e) => setSport(e.target.value)}
+            className="w-full border border-gray-300 rounded-md p-2"
+          >
+            <option value="">
+              {(dictionary.form as Record<string, string>).sport}
             </option>
-          ))}
-        </select>
-      </div>
+            {Object.entries(dictionary.sports).map(([key, value]) => (
+              <option key={key} value={key}>
+                {value as string}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      {/* User Type Selection */}
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          {dictionary.userType}
-        </label>
-        <select
-          value={selectedUserType}
-          onChange={(e) => setSelectedUserType(e.target.value)}
-          className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
-        >
-          <option value="">---</option>
-          {Object.entries(dictionary.userTypes).map(([key, value]) => (
-            <option key={key} value={key}>
-              {value}
+        {/* Facility Type */}
+        <div>
+          <label className="block text-sm font-medium">
+            {(dictionary.form as Record<string, string>).facility}
+          </label>
+          <select
+            value={facility}
+            onChange={(e) => setFacility(e.target.value)}
+            className="w-full border border-gray-300 rounded-md p-2"
+          >
+            <option value="">
+              {(dictionary.form as Record<string, string>).facility}
             </option>
-          ))}
-        </select>
-      </div>
+            {Object.entries(dictionary.facilities).map(([key, value]) => (
+              <option key={key} value={key}>
+                {value as string}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      {/* Area Selection */}
-      <div>
-        <label className="block text-sm font-medium text-gray-700 mb-2">
-          {dictionary.area}
-        </label>
-        <select
-          value={selectedArea}
-          onChange={(e) => setSelectedArea(e.target.value)}
-          className="w-full px-4 py-2 border rounded-md focus:ring-blue-500 focus:border-blue-500"
-        >
-          <option value="">---</option>
-          {Object.entries(dictionary.areas).map(([key, value]) => (
-            <option key={key} value={key}>
-              {value}
-            </option>
-          ))}
-        </select>
-      </div>
-
-      {/* Search Button */}
-      <button
-        onClick={handleSearch}
-        className="w-full bg-blue-500 text-white py-2 px-4 rounded-md hover:bg-blue-600 transition-colors"
-      >
-        {dictionary.search}
-      </button>
+        {/* Submit Button */}
+        <div className="flex justify-end space-x-2">
+          <button
+            type="button"
+            onClick={() => {
+              setDate(null);
+              setStartTime("");
+              setEndTime("");
+              setSport("");
+              setFacility("");
+            }}
+            className="px-4 py-2 bg-gray-200 text-gray-800 rounded-md"
+          >
+            {(dictionary.form as Record<string, string>).reset}
+          </button>
+          <button
+            type="submit"
+            className="px-4 py-2 bg-blue-600 text-white rounded-md"
+          >
+            {(dictionary.form as Record<string, string>).submit}
+          </button>
+        </div>
+      </form>
+      <ExpandableCard dictionary={dictionary} />
     </div>
-  )
-}
+  );
+};
+
+export default HomeForm;

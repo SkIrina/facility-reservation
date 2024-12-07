@@ -50,5 +50,36 @@
     "endTime": "終了時間",
     "confirm": "予約を確定する",
     "cancel": "キャンセル"
+  },
+  "form": {
+    "date": "日付選択",
+    "startTime": "開始時間",
+    "endTime": "終了時間",
+    "sport": "スポーツの種類",
+    "facility": "施設の種類",
+    "submit": "送信",
+    "reset": "リセット"
+  },
+  "sports": {
+    "basketball": "バスケットボール",
+    "miniBasketball": "ミニバスケットボール",
+    "volleyball": "バレーボール",
+    "softVolleyball": "ソフトバレーボール",
+    "badminton": "バドミントン",
+    "handball": "ハンドボール",
+    "futsal": "フットサル",
+    "tableTennis": "卓球",
+    "spongeTennis": "スポンジテニス",
+    "dodgeBall": "ドッジボール",
+    "archery": "アーチェリー",
+    "newSport": "ニュースポーツ"
+  },
+  "facilities": {
+    "fullCourt": "全面コート",
+    "halfCourt": "ハーフコート",
+    "room": "部屋"
+  },
+  "results": {
+    "court": "コート"
   }
 }
