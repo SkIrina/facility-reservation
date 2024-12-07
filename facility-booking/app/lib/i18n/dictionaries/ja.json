@@ -22,10 +22,7 @@
       "spongeTennis": "スポンジテニス",
       "dodgeBall": "ドッジボール",
       "archery": "アーチェリー",
-      "newSport": "ニュースポーツ",
-      "tennis": "テニス",
-      "soccer": "サッカー",
-      "swimming": "水泳"
+      "newSport": "ニュースポーツ"
     },
     "userTypes": {
       "adult": "一般",

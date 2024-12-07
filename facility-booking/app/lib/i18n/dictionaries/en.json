@@ -22,10 +22,7 @@
       "spongeTennis": "Sponge Tennis",
       "dodgeBall": "DodgeBall",
       "archery": "Archery",
-      "newSport": "New Sport",
-      "tennis": "Tennis",
-      "soccer": "Soccer",
-      "swimming": "Swimming"
+      "newSport": "New Sport"
     },
     "userTypes": {
       "adult": "Adult",
