@@ -20,7 +20,8 @@
     },
     "userTypes": {
       "adult": "Adult",
-      "student": "Student"
+      "middleSchool": "Middle School Student",
+      "elementarySchool": "Elementary School Student"
     },
     "areas": {
       "izumo": "Izumo",

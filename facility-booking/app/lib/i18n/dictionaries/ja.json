@@ -20,7 +20,8 @@
     },
     "userTypes": {
       "adult": "一般",
-      "student": "学生"
+      "middleSchool": "中学生",
+      "elementarySchool": "小学生"
     },
     "areas": {
       "izumo": "出雲",
