@@ -1,13 +1,13 @@
-import { getDictionary } from "@/lib/i18n";
 import { HomeForm } from "@/components/home/home-form";
 import { LanguageSwitcher } from "@/components/language-switcher";
-import { Locale } from "@/lib/i18n";
+import { getDictionary } from "./dictionaries";
 
 export default async function HomePage({
-  params: { locale },
+  params,
 }: {
-  params: { locale: Locale };
+  params: Promise<{ locale: string }>;
 }) {
+  const locale = (await params).locale;
   console.log(locale);
   const dictionary = await getDictionary(locale as "en" | "ja");
 
