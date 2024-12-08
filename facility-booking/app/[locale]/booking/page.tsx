@@ -9,6 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
+  ChartOptions,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
@@ -22,7 +23,7 @@ ChartJS.register(
   Legend
 );
 
-export const options = {
+export const options: ChartOptions<"bar"> = {
   plugins: {
     title: {
       display: true,
@@ -61,7 +62,17 @@ const labels = [
   "20:00",
 ];
 
-export const data = {
+type DataProps = {
+  labels: string[];
+  datasets: {
+    label: string;
+    data: number[];
+    backgroundColor: string;
+    stack: string;
+  }[];
+};
+
+export const data: DataProps = {
   labels,
   datasets: [
     // {

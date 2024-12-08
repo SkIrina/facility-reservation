@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 
-type Recursive<T> = {
-  [key: string]: T | Recursive<T>;
-};
+// type Recursive<T> = {
+//   [key: string]: T | Recursive<T>;
+// };
 
 export type TimeSlot =
   | "08:00"
@@ -28,12 +28,12 @@ export type Establishment = {
 };
 
 const ExpandableCard = ({
-  dictionary,
+  // dictionary,
   establishment,
   updatePrice,
   updateSelected,
 }: {
-  dictionary: Recursive<string>;
+  // dictionary: Recursive<string>;
   establishment: Establishment;
   updatePrice: (price: number) => void;
   updateSelected: ({
@@ -62,7 +62,7 @@ const ExpandableCard = ({
     setSelectedSlots(newSelectedSlots);
     const slots = Object.entries(newSelectedSlots);
     const totalPrice = slots.reduce(
-      (accumulator, [key, value]) => accumulator + value.length,
+      (accumulator, currentValue) => accumulator + currentValue[1].length,
       0
     );
     updatePrice(totalPrice);

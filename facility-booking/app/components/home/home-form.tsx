@@ -177,6 +177,7 @@ const HomeForm = ({
         );
       });
     });
+    setEstablishments((prev) => prev);
     // setEstablishments((prev) => {
     //   return prev.map((est) => {
     //     const updatedBooking = bookings.find(
@@ -392,7 +393,7 @@ const HomeForm = ({
           {results.map((est) => (
             <Fragment key={est.title}>
               <ExpandableCard
-                dictionary={dictionary}
+                // dictionary={dictionary}
                 establishment={est}
                 updatePrice={updatePrice}
                 updateSelected={updateSelected}
@@ -414,7 +415,7 @@ const HomeForm = ({
             <button
               type="button"
               className="py-2 bg-blue-600 text-white rounded-md px-10 mr-4 flex-grow text-3xl"
-              onClick={() => search()}
+              onClick={() => reserve()}
             >
               {(dictionary.form as Record<string, string>).reserve}
             </button>
