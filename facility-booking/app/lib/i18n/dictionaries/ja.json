@@ -4,7 +4,7 @@
     "search": "検索"
   },
   "home": {
-    "title": "スポーツ施設予約",
+    "title": "スポーツ施設予約システム",
     "date": "日付選択",
     "sport": "スポーツの種類",
     "userType": "利用者区分",
@@ -58,7 +58,7 @@
     "sport": "スポーツの種類",
     "facility": "施設の種類",
     "user": "利用者の種類",
-    "submit": "送信",
+    "submit": "検索",
     "reset": "リセット",
     "reserve": "予約"
   },

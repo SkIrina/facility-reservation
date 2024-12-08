@@ -4,7 +4,7 @@
     "search": "Search"
   },
   "home": {
-    "title": "Sports Facility Reservation",
+    "title": "Sports Facility Reservation System",
     "date": "Select Date",
     "sport": "Sport Type",
     "userType": "User Type",
@@ -59,8 +59,9 @@
     "sport": "Sport Type",
     "facility": "Type of Facility",
     "user": "Type of user",
-    "submit": "Submit",
-    "reset": "Reset"
+    "submit": "Search",
+    "reset": "Reset",
+    "reserve": "Book"
   },
   "sports": {
     "basketball": "Basketball",
