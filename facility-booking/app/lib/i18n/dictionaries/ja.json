@@ -59,7 +59,8 @@
     "facility": "施設の種類",
     "user": "利用者の種類",
     "submit": "送信",
-    "reset": "リセット"
+    "reset": "リセット",
+    "reserve": "予約"
   },
   "sports": {
     "basketball": "バスケットボール",

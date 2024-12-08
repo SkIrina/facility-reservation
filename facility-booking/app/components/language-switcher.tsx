@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 export function LanguageSwitcher({ locale }: { locale: string }) {
   return (
@@ -6,19 +6,19 @@ export function LanguageSwitcher({ locale }: { locale: string }) {
       <Link
         href="/en"
         className={`px-3 py-1 rounded inline-block ${
-          locale === 'en' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+          locale === "en" ? "bg-blue-600 text-white" : "bg-gray-200"
         }`}
       >
-        EN
+        ENG
       </Link>
       <Link
         href="/ja"
         className={`px-3 py-1 rounded inline-block ${
-          locale === 'ja' ? 'bg-blue-500 text-white' : 'bg-gray-200'
+          locale === "ja" ? "bg-blue-600 text-white" : "bg-gray-200"
         }`}
       >
-        JP
+        日本語
       </Link>
     </div>
-  )
+  );
 }

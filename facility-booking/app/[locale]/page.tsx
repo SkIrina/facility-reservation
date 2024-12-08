@@ -11,17 +11,5 @@ export default async function HomePage({
   console.log(locale);
   const dictionary = await getDictionary(locale as "en" | "ja");
 
-  return (
-    <div className="min-h-screen bg-gray-50">
-      <LanguageSwitcher locale={locale} />
-
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-3xl font-bold text-center mb-8">
-          {dictionary.home.title}
-        </h1>
-
-        <HomeForm locale={locale} dictionary={dictionary} />
-      </div>
-    </div>
-  );
+  return <HomeForm locale={locale} dictionary={dictionary} />;
 }
