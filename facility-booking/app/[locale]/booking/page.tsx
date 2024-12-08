@@ -9,7 +9,7 @@ import {
   Title,
   Tooltip,
   Legend,
-  ChartOptions,
+  ChartOptions as ChartJSOptions,
 } from "chart.js";
 import { Bar } from "react-chartjs-2";
 import { faker } from "@faker-js/faker";
@@ -23,7 +23,8 @@ ChartJS.register(
   Legend
 );
 
-export const options: ChartOptions<"bar"> = {
+// Define chart options without exporting
+const chartOptions: ChartJSOptions<"bar"> = {
   plugins: {
     title: {
       display: true,
@@ -62,31 +63,22 @@ const labels = [
   "20:00",
 ];
 
-type DataProps = {
-  labels: string[];
-  datasets: {
-    label: string;
-    data: number[];
-    backgroundColor: string;
-    stack: string;
-  }[];
-};
+interface Dataset {
+  label: string;
+  data: number[];
+  backgroundColor: string;
+  stack: string;
+}
 
-export const data: DataProps = {
+interface ChartData {
+  labels: string[];
+  datasets: Dataset[];
+}
+
+// Define chart data without exporting
+const chartData: ChartData = {
   labels,
   datasets: [
-    // {
-    //   label: "Court A",
-    //   data: labels.map(() => faker.number.int({ min: 0, max: 80 })),
-    //   backgroundColor: "rgb(255, 99, 132)",
-    //   stack: "Stack 0",
-    // },
-    // {
-    //   label: "Court A cancel",
-    //   data: labels.map(() => faker.number.int({ min: 0, max: 20 })),
-    //   backgroundColor: "rgb(255, 201, 213)",
-    //   stack: "Stack 0",
-    // },
     {
       label: "Usage",
       data: labels.map(() => faker.number.int({ min: 0, max: 80 })),
@@ -99,25 +91,13 @@ export const data: DataProps = {
       backgroundColor: "rgb(255, 110, 97)",
       stack: "Stack 1",
     },
-    // {
-    //   label: "Room",
-    //   data: labels.map(() => faker.number.int({ min: 0, max: 80 })),
-    //   backgroundColor: "rgb(53, 162, 235)",
-    //   stack: "Stack 2",
-    // },
-    // {
-    //   label: "Room",
-    //   data: labels.map(() => faker.number.int({ min: 0, max: 20 })),
-    //   backgroundColor: "rgb(141, 192, 227)",
-    //   stack: "Stack 2",
-    // },
   ],
 };
 
 export default function Dashboard() {
   return (
     <div className="max-w-5xl mx-auto">
-      <Bar options={options} data={data} />
+      <Bar options={chartOptions} data={chartData} />
     </div>
   );
 }
