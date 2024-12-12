@@ -8,6 +8,7 @@ import ExpandableCard, {
   TimeSlot,
 } from "./expandable-card";
 import Selector from "./selector";
+import { useDictionary } from "@/app/lib/DictionaryContext";
 
 type Recursive<T> = {
   [key: string]: T | Recursive<T>;
@@ -98,13 +99,9 @@ const establishments_init = [
   },
 ];
 
-const HomeForm = ({
-  locale,
-  dictionary,
-}: {
-  locale: string;
-  dictionary: Recursive<string>;
-}) => {
+const HomeForm = ({ locale }: { locale: string }) => {
+  const dictionary = useDictionary();
+
   const [bookings, setBookings] = useState([] as Establishment[]);
   const [establishments, setEstablishments] = useState(establishments_init);
 
