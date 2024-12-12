@@ -1,5 +1,4 @@
 import HomeForm from "../components/home/home-form";
-import { getDictionary } from "./dictionaries";
 
 export default async function HomePage({
   params,

@@ -10,10 +10,6 @@ import ExpandableCard, {
 import Selector from "./selector";
 import { useDictionary } from "@/app/lib/DictionaryContext";
 
-type Recursive<T> = {
-  [key: string]: T | Recursive<T>;
-};
-
 const establishments_init = [
   {
     title: "Sun ability",
