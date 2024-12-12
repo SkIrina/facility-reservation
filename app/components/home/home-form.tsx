@@ -7,6 +7,7 @@ import ExpandableCard, {
   Facility,
   TimeSlot,
 } from "./expandable-card";
+import Selector from "./selector";
 
 type Recursive<T> = {
   [key: string]: T | Recursive<T>;
@@ -266,7 +267,7 @@ const HomeForm = ({
               <select
                 value={startTime}
                 onChange={(e) => setStartTime(e.target.value)}
-                className="w-full border border-gray-300 rounded-md p-2"
+                className="w-full border border-gray-300 rounded-md p-2 text-gray-800"
               >
                 <option value="">
                   {/* {(dictionary.form as Record<string, string>).startTime} */}
@@ -285,7 +286,7 @@ const HomeForm = ({
               <select
                 value={endTime}
                 onChange={(e) => setEndTime(e.target.value)}
-                className="w-full border border-gray-300 rounded-md p-2"
+                className="w-full border border-gray-300 rounded-md p-2 text-gray-800"
               >
                 <option value="">
                   {/* {(dictionary.form as Record<string, string>).endTime} */}
@@ -300,66 +301,28 @@ const HomeForm = ({
           </div>
 
           {/* Sport Type */}
-          <div className="w-full sm:max-w-52">
-            <label className="block text-sm font-medium">
-              {(dictionary.form as Record<string, string>).sport}
-            </label>
-            <select
-              value={sport}
-              onChange={(e) => setSport(e.target.value)}
-              className="w-full border border-gray-300 rounded-md p-2"
-            >
-              <option value="">
-                {/* {(dictionary.form as Record<string, string>).sport} */}
-              </option>
-              {Object.entries(dictionary.sports).map(([key, value]) => (
-                <option key={key} value={key}>
-                  {value as string}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Selector
+            label={(dictionary.form as Record<string, string>).sport}
+            value={sport}
+            onChange={setSport}
+            options={dictionary.sports as Record<string, string>}
+          />
 
           {/* Facility Type */}
-          <div className="w-full  sm:max-w-52">
-            <label className="block text-sm font-medium">
-              {(dictionary.form as Record<string, string>).facility}
-            </label>
-            <select
-              value={facility}
-              onChange={(e) => setFacility(e.target.value)}
-              className="w-full border border-gray-300 rounded-md p-2"
-            >
-              <option value="">
-                {/* {(dictionary.form as Record<string, string>).facility} */}
-              </option>
-              {Object.entries(dictionary.facilities).map(([key, value]) => (
-                <option key={key} value={key}>
-                  {value as string}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Selector
+            label={(dictionary.form as Record<string, string>).facility}
+            value={facility}
+            onChange={setFacility}
+            options={dictionary.facilities as Record<string, string>}
+          />
+
           {/* User Type */}
-          <div className="w-full sm:max-w-52">
-            <label className="block text-sm font-medium">
-              {(dictionary.form as Record<string, string>).user}
-            </label>
-            <select
-              value={user}
-              onChange={(e) => setUser(e.target.value)}
-              className="w-full border border-gray-300 rounded-md p-2"
-            >
-              <option value="">
-                {/* {(dictionary.form as Record<string, string>).user} */}
-              </option>
-              {Object.entries(dictionary.users).map(([key, value]) => (
-                <option key={key} value={key}>
-                  {value as string}
-                </option>
-              ))}
-            </select>
-          </div>
+          <Selector
+            label={(dictionary.form as Record<string, string>).user}
+            value={user}
+            onChange={setUser}
+            options={dictionary.users as Record<string, string>}
+          />
 
           {/* Submit Button */}
           <div className="flex justify-end space-x-2 mt-2">

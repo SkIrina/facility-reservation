@@ -21,7 +21,9 @@ export function LanguageSwitcher({ locale }: { locale: string }) {
         <Link
           href="/en"
           className={`px-3 py-1 rounded inline-block ${
-            locale === "en" ? "bg-blue-600 text-white" : "bg-gray-200"
+            locale === "en"
+              ? "bg-blue-600 text-white"
+              : "bg-gray-200 text-gray-800"
           }`}
         >
           ENG
@@ -29,7 +31,9 @@ export function LanguageSwitcher({ locale }: { locale: string }) {
         <Link
           href="/ja"
           className={`px-3 py-1 rounded inline-block ${
-            locale === "ja" ? "bg-blue-600 text-white" : "bg-gray-200"
+            locale === "ja"
+              ? "bg-blue-600 text-white"
+              : "bg-gray-200 text-gray-800"
           }`}
         >
           日本語

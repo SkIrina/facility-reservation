@@ -76,7 +76,7 @@ const ExpandableCard = ({
     <div className="mx-auto border rounded-lg shadow-md bg-white m-2">
       {/* Card Header */}
       <div
-        className="cursor-pointer p-4 bg-blue-100 flex justify-between items-center"
+        className="cursor-pointer p-4 bg-blue-100 dark:bg-blue-600 flex justify-between items-center rounded-t-lg"
         onClick={() => setIsExpanded((prev) => !prev)}
       >
         <h2 className="text-lg font-bold">{establishment.title}</h2>
@@ -85,7 +85,7 @@ const ExpandableCard = ({
 
       {/* Card Body */}
       {isExpanded && (
-        <div className="p-4">
+        <div className="p-4 dark:bg-black rounded-b-lg">
           <table className="w-full border-collapse border border-gray-300">
             <tbody>
               {establishment.facilities.map((facility) => (
